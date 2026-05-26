@@ -1,47 +1,80 @@
-# CASPER 2.0 - Projet PRONTO (projet de l'ingénieur dans un monde en transition)
-[![Linux](https://img.shields.io/badge/Linux-FCC624?logo=linux&logoColor=black)](https://www.linux.org/)
-[![Python](https://img.shields.io/badge/python-3.11%2B-blue?logo=python&logoColor=white)](https://www.python.org/)
-[![Raspberry Pi](https://img.shields.io/badge/Raspberry_Pi-A22846?logo=raspberrypi&logoColor=white)](https://www.raspberrypi.org/)
-[![API](https://img.shields.io/badge/API-FastAPI-05998B?logo=fastapi&logoColor=white)](https://en.wikipedia.org/wiki/API)
-[![3D Modeling](https://img.shields.io/badge/3D_Modeling-4B8BBE?logo=opencascade&logoColor=white)](https://en.wikipedia.org/wiki/3D_modeling)
+# Casper 2.0 – Robot interactif compagnon
 
+Projet PRONTO – IMT Atlantique (S6 2025–2026 – Campus de Brest)
 
-> [!NOTE]
-> 
-> Un projet dans le cadre de notre première année en école d'ingénieur à IMT Atlantique visant la conception et fabrication intégrale d'un robot compagnon prénommé WIKIBOT.
+---
 
-WIKIBOT est un robot interactif capable de répondre à une requête vocale en utilisant Wikipedia, avec expressions faciales et mouvements corporels.
+## Description
 
-<div align="center">
-<img src="./images/Equipe.jpg" >
-</div>
+Casper 2.0 est un robot compagnon interactif développé dans le cadre du projet PRONTO.
 
-La vidéo de présentation du robot est disponible au téléchargement dans le dossier ./images, et vous la retrouverez également sur youtube: https://youtu.be/LJfq5HjDZg8 .
+L’objectif est d’améliorer une plateforme robotique existante afin de rendre les interactions **plus naturelles et multimodales**, en combinant :
 
-## Objectifs
+- Interaction vocale en langage naturel
+- Suivi visuel de l’utilisateur en temps réel
+- Gestuelle synchronisée avec la parole
+- Dialogue via intelligence artificielle (Google Gemini)
 
-> Modélisation et impression 3D de l'intégralité du corps du robot<br>
+---
 
-> Conception du montage électronique et choix des composants<br>
+## Architecture du système
 
-> Implémentation du code avec choix des librairies<br>
+Le système repose sur une **Raspberry Pi** comme unité centrale, connectée à plusieurs modules :
 
-Tout cela en un temps limité de **5 mois**, de janvier 2025 à mi mai 2025.
+- Caméra (vision)
+- ReSpeaker Pi HAT (audio)
+- API Gemini (IA)
+- Synthèse vocale Piper
+- Servomoteurs (PCA9685 via I2C)
+- Interface graphique (Pygame)
 
-## Points abordés
-* Gestion de projet : répartition des tâches, diagramme de Gantt et planification
-* Conception de A à Z d'un robot modulaire à l'impression 3D intègrant les nombreux composants électroniques
-* Traitement d'un signal audio: reconnaissance vocale, recherche d'une réponse sur le web, synthèse vocale
-* Pilotage de servoomoteurs pour bouger Les bras et la tête 
-* Invention de l'intégralité des étapes de l'interaction, en prenant en compte tous les cas de figure possible dont les potentiels disfonctionnement des librairies utilisées
-* Communication des avancés au sein de l'équipe et avec nos encadrants
+---
 
-## Qui sommes-nous ?
+## Architecture logicielle
 
-Nous sommes une équipe de 4 étudiants de l'IMT Atlantique composée de:<br>
-<br>
-Coline FELTIN (responsable modélisation et impression 3D)<br>
-Florian THOLLOT (responsable modélisation et impression 3D)<br>
-Louis BONDUELLE (responsable code et électronique)<br>
-et Astrid MARION (responsable code et électronique)<br>
+Le projet est entièrement développé en **Python** avec une architecture multi-thread :
 
+| Module | Rôle |
+|------|------|
+| `Main.py` | Orchestration globale (machine à états) |
+| `AudioProcessing.py` | Capture audio + STT + IA + TTS |
+| `CameraTracking.py` | Détection et suivi du visage |
+| `Servo.py` | Contrôle des moteurs |
+| `Screen.py` | Interface visuelle (expressions) |
+| `Speak.py` | Lecture audio |
+
+---
+
+## Pipeline vocal
+
+1. Capture audio via ReSpeaker
+2. Transcription via **Vosk**
+3. Traitement de la requête via **Google Gemini API**
+4. Synthèse vocale via **Piper TTS**
+5. Lecture audio synchronisée avec les mouvements
+
+---
+
+## Suivi visuel
+
+- Détection de visage via **OpenCV (Haar Cascade)**
+- Calcul du centre du visage
+- Correction du servo moteur de la tête via PCA9685
+- Arrêt automatique du tracking pendant la prise de parole
+
+---
+
+## Gestuelle
+
+- Animation des bras synchronisée avec la parole
+- Mouvements simplifiés pour réduire la charge CPU
+- Optimisation pour Raspberry Pi (limitation des threads et PWM)
+
+---
+
+## Installation
+
+```bash
+git clone https://github.com/VictorGrj/Projet_PRONTO_CASPER2.0.git
+cd Projet_PRONTO_CASPER2.0
+pip install -r requirements.txt
