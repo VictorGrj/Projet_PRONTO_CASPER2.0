@@ -72,17 +72,6 @@ Le projet est entièrement développé en **Python** avec une architecture multi
 
 ---
 
-## Installation
-
-```bash
-git clone https://github.com/VictorGrj/Projet_PRONTO_CASPER2.0.git
-cd Projet_PRONTO_CASPER2.0
-pip install -r requirements.txt
-
-
----
-
-```markdown
 ## Équipe projet
 
 Projet réalisé par une équipe de 5 étudiants :
@@ -94,3 +83,12 @@ Projet réalisé par une équipe de 5 étudiants :
 | Miannay Benjamin |
 | Seillé Gautier |
 | Garajeu Victor |
+
+---
+
+## Installation
+
+```bash
+git clone https://github.com/VictorGrj/Projet_PRONTO_CASPER2.0.git
+cd Projet_PRONTO_CASPER2.0
+pip install -r requirements.txt
