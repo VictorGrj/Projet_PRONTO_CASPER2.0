@@ -1,0 +1,30 @@
+#Vision/OpenCV
+opencv-python
+numpy
+
+#Audio processing
+sounddevice
+soundfile
+wave
+
+#Speech-to-text (Vosk)
+vosk
+
+#IA (Google Gemini)
+google-generativeai
+
+#Text-to-Speech (Piper)
+pydub
+
+#Interface graphique
+pygame
+
+#Servo/hardware (PCA9685)
+adafruit-circuitpython-pca9685
+adafruit-circuitpython-servokit
+
+#GPIO Raspberry Pi
+RPi.GPIO
+
+#Utilitaires
+requests
