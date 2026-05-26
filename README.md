@@ -8,7 +8,7 @@ Projet PRONTO – IMT Atlantique (S6 2025–2026 – Campus de Brest)
 
 Casper 2.0 est un robot compagnon interactif développé dans le cadre du projet PRONTO.
 
-L’objectif est d’améliorer une plateforme robotique existante afin de rendre les interactions **plus naturelles et multimodales**, en combinant :
+L’objectif est d’améliorer une plateforme robotique existante afin de rendre les interactions plus naturelles et multimodales, en combinant :
 
 - Interaction vocale en langage naturel
 - Suivi visuel de l’utilisateur en temps réel
@@ -19,7 +19,7 @@ L’objectif est d’améliorer une plateforme robotique existante afin de rendr
 
 ## Architecture du système
 
-Le système repose sur une **Raspberry Pi** comme unité centrale, connectée à plusieurs modules :
+Le système repose sur une Raspberry Pi comme unité centrale, connectée à plusieurs modules :
 
 - Caméra (vision)
 - ReSpeaker Pi HAT (audio)
@@ -32,7 +32,7 @@ Le système repose sur une **Raspberry Pi** comme unité centrale, connectée à
 
 ## Architecture logicielle
 
-Le projet est entièrement développé en **Python** avec une architecture multi-thread :
+Le projet est entièrement développé en Python avec une architecture multi-thread :
 
 | Module | Rôle |
 |------|------|
@@ -48,16 +48,16 @@ Le projet est entièrement développé en **Python** avec une architecture multi
 ## Pipeline vocal
 
 1. Capture audio via ReSpeaker
-2. Transcription via **Vosk**
-3. Traitement de la requête via **Google Gemini API**
-4. Synthèse vocale via **Piper TTS**
+2. Transcription via Vosk
+3. Traitement de la requête via Google Gemini API
+4. Synthèse vocale via Piper TTS
 5. Lecture audio synchronisée avec les mouvements
 
 ---
 
 ## Suivi visuel
 
-- Détection de visage via **OpenCV (Haar Cascade)**
+- Détection de visage via OpenCV (Haar Cascade)
 - Calcul du centre du visage
 - Correction du servo moteur de la tête via PCA9685
 - Arrêt automatique du tracking pendant la prise de parole
