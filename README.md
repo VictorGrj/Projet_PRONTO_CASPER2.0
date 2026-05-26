@@ -78,3 +78,15 @@ Le projet est entièrement développé en **Python** avec une architecture multi
 git clone https://github.com/VictorGrj/Projet_PRONTO_CASPER2.0.git
 cd Projet_PRONTO_CASPER2.0
 pip install -r requirements.txt
+
+---
+
+## Qui sommes-nous ?
+
+Nous sommes une équipe de 4 étudiants de l'IMT Atlantique composée de:<br>
+<br>
+Greillier Matthieu<br>
+Lunven Nathan<br>
+Miannay Benjamin<br>
+Seillé Gautier<br>
+Garajeu Victor<br>
