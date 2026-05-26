@@ -78,6 +78,7 @@ Le projet est entièrement développé en **Python** avec une architecture multi
 git clone https://github.com/VictorGrj/Projet_PRONTO_CASPER2.0.git
 cd Projet_PRONTO_CASPER2.0
 pip install -r requirements.txt
+```bash
 
 ---
 
