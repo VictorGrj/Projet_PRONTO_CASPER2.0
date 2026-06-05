@@ -71,10 +71,8 @@ class Main:
             # -------- BOUCLE PRINCIPALE DE DIALOGUE --------
             while True:
                 try: 
-                    # NOUVEAU: Le bloc try/except protège contre les crashs [Errno 5] des moteurs
                     self.running = True
 
-                    # 1. Le robot dit "Tu peux parler" -> Mode speaking
                     self.screen.change_mode("speaking")
                     OUTPUT_PATH = os.path.join(os.path.dirname(__file__), ".", "audio", "preRecordedDialogs","youCanSpeak.wav")
                     audioYouCanSpeak = Speak(OUTPUT_PATH)
@@ -83,7 +81,6 @@ class Main:
                     audioYouCanSpeak.join() # On attend impérativement qu'il finisse de parler
                     audioYouCanSpeak.stop()
                     
-                    # --- PAUSE VITALE POUR L'AUDIO ---
                     # On laisse 0.5s à Linux pour relâcher complètement la carte son
                     time.sleep(0.5)
                     
@@ -158,13 +155,12 @@ class Main:
                     time.sleep(0.5)
 
                 except OSError as err:
-                    # GESTION DU CRASH MOTEUR [Errno 5]
                     # Si le suivi de visage et les bras rentrent en collision sur l'I2C, 
-                    # on intercepte l'erreur pour que le script ne s'éteigne pas !
+                    # on intercepte l'erreur pour que le script ne s'éteigne pas 
                     print(f"\n[I2C IGNORED] Micro-coupure du bus I2C ({err}). Le robot respire et continue !\n")
                     time.sleep(0.5)
                     self.running = False 
-                    continue # On force la boucle à recommencer tranquillement
+                    continue
 
         except Exception as e:
             print(f"Error in the main event loop: {e}")
