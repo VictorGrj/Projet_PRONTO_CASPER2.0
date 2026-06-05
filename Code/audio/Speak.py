@@ -32,5 +32,4 @@ class Speak(threading.Thread):
                 break
             time.sleep(0.1)
             
-        # LA LIGNE CRUCIALE À AJOUTER EST ICI :
         pygame.mixer.quit()
