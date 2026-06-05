@@ -13,7 +13,7 @@
    ```bash
    ssh grp10@rpi.local
 
-2. Cloner le projet7
+2. Cloner le projet
 git clone https://github.com/VictorGrj/Projet_PRONTO_CASPER2.0.git
 cd Projet_PRONTO_CASPER2.0
 
