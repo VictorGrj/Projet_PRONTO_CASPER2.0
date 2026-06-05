@@ -73,11 +73,11 @@ class AudioProcessing(threading.Thread):
             print(f"DEBUG: Vosk a compris -> '{query}'")
 
 
-            if query == "": #wikipedia doesn't support empty query
+            if query == "": 
                 self.answer = None 
             else:
                 self.gemini(query)
-                if self.answer != None: # wikipedia response can be None if it doesn't find the answer
+                if self.answer != None: 
                     self.tts(self.answer)
 
         except Exception as e:
@@ -105,9 +105,8 @@ class AudioProcessing(threading.Thread):
 
     def recordingAudio(self):
         try:
-            SAMPLE_RATE = 16000  # meilleur pour Vosk
+            SAMPLE_RATE = 16000  
 
-            # IMPORTANT : reset complet de la queue
             self.q = queue.Queue()
 
             GPIO.setmode(GPIO.BCM)
@@ -204,7 +203,6 @@ class AudioProcessing(threading.Thread):
                     if len(data) == 0:
                         break
                     
-                    # On affiche les résultats partiels pour voir si Vosk détecte AU MOINS des sons
                     if recognizer.AcceptWaveform(data):
                         partial = json.loads(recognizer.Result())
                         if partial.get("text", ""):
@@ -224,7 +222,6 @@ class AudioProcessing(threading.Thread):
 #############################################################################################################################
 
     def gemini(self, question):
-        # Correction du modèle (le 2.5 n'existe pas, d'où le None)
         client = genai.Client(api_key="AQ.Ab8RN6KfyYLQeEGaFHnz4DrYGJV5_tV8FQXfC0jBs5j4K4qBng")
         try :
             response = client.models.generate_content(
