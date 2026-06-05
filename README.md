@@ -3,6 +3,12 @@
 Projet PRONTO – IMT Atlantique (S6 2025–2026 – Campus de Brest)
 
 ---
+## Présentation
+
+La vidéo de présentation du projet est accessible ici : 
+https://www.youtube.com/watch?v=T89Vj4Z8cow
+
+---
 
 ## Description
 
