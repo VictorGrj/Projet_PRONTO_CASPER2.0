@@ -32,5 +32,5 @@ sudo apt install portaudio19-dev libasound2-dev python3-opencv
 sudo raspi-config
 Naviguez vers : Interface Options → I2C → Enable
 
-7. Lancer le projet
+7. Lancer le projet :
 python Main.py
