@@ -12,9 +12,9 @@ class CameraTracking(threading.Thread):
         
         self.face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
         
-        self.BUTTON_PIN = 4 #
-        self.head_idx = 1   #
-        self.OE_PIN = 17    #
+        self.BUTTON_PIN = 4 
+        self.head_idx = 1   
+        self.OE_PIN = 17    
         
         try:
             self.kit = ServoKit(channels=16)
@@ -29,7 +29,6 @@ class CameraTracking(threading.Thread):
             self.picam.configure(config)
             
             # --- CORRECTION FOCUS POUR CAMÉRA MODULE 3 ---
-            # Mode 2 = Autofocus Continu (la caméra ajuste sa netteté tout le temps)
             self.picam.set_controls({"AfMode": 2}) 
             
             self.picam.start()
@@ -71,7 +70,6 @@ class CameraTracking(threading.Thread):
                         face_center_x = x + (w // 2)
                         raw_error = (face_center_x - 160) / 160
                         
-                        # Suivi direct et nerveux pour valider la mécanique
                         smooth_error = (smooth_error * 0.4) + (raw_error * 0.6)
                         angle_approx = smooth_error * 30 
                         
@@ -80,7 +78,6 @@ class CameraTracking(threading.Thread):
                         if self.kit:
                             try:
                                 if abs(angle_approx) > DEADZONE:
-                                    # Vitesse de base franche pour vaincre le poids de la tête
                                     speed = 0.24 + (abs(smooth_error) * 0.15)
                                     speed = min(speed, 0.45) 
                                     
