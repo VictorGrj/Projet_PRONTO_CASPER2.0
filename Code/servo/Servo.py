@@ -25,7 +25,6 @@ class Servo(threading.Thread):
         self.PINCE_OUVERTE = 10
         self.PINCE_FERMEE = 70
 
-        # ✅ POINT 5 ICI (INITIALISATION PINCES)
         self.kit.servo[self.PIN_PINCE_DROITE].angle = self.PINCE_OUVERTE
         self.kit.servo[self.PIN_PINCE_GAUCHE].angle = self.PINCE_OUVERTE
         time.sleep(0.3)
@@ -63,7 +62,6 @@ class Servo(threading.Thread):
     def arm_with_claw(self, arm_pin, claw_pin, direction):
         speed = 0.5 * direction
 
-        # sécurité : pince ouverte avant mouvement
         self.open_claw(claw_pin)
 
         time.sleep(0.2)
@@ -72,7 +70,6 @@ class Servo(threading.Thread):
         self.kit.continuous_servo[arm_pin].throttle = speed
         time.sleep(0.5)
 
-        # attraper objet
         self.close_claw(claw_pin)
         time.sleep(0.3)
 
@@ -86,7 +83,6 @@ class Servo(threading.Thread):
 
         self.kit.continuous_servo[arm_pin].throttle = 0
 
-        # relâchement léger
         self.open_claw(claw_pin)
 
     # ---------------- HEAD ----------------
@@ -99,7 +95,7 @@ class Servo(threading.Thread):
 
         self.kit.continuous_servo[pin].throttle = 0
 
-    # ---------------- STOP CLEAN ----------------
+    # ---------------- STOP ----------------
     def stop_servos(self):
         try:
             if self.kit:
